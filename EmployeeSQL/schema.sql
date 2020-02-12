@@ -9,11 +9,12 @@ CREATE TABLE departments (
 drop table if exists dept_emp cascade;
 CREATE TABLE dept_emp (
     emp_no int NOT NULL,
-    dept_no varchar(10) NOT NULL,
+	foreign key(emp_no) references employees(emp_no),
+    dept_no varchar(4) NOT NULL,
 	foreign key(dept_no) references departments(dept_no),
     from_date date NOT NULL,
     to_date date NOT NULL,
-	primary key(emp_no,dept_no));	
+	primary key(emp_no,dept_no));
 
 -- create department manager table
 drop table if exists dept_manager cascade;
@@ -21,6 +22,7 @@ CREATE TABLE dept_manager (
 	dept_no varchar(10) NOT NULL,
     foreign key(dept_no) references departments(dept_no),
     emp_no int NOT NULL primary key,
+	foreign key(emp_no) references employees(emp_no),
     from_date date NOT NULL,
     to_date date NOT NULL);
 
@@ -38,6 +40,7 @@ CREATE TABLE employees (
 drop table if exists salaries cascade;
 CREATE TABLE salaries (
     emp_no integer NOT NULL primary key,
+	foreign key(emp_no) references employees(emp_no),
     salary integer NOT NULL,
     from_date date NOT NULL,
     to_date date NOT NULL);
@@ -47,6 +50,7 @@ CREATE TABLE salaries (
 drop table if exists titles cascade;
 CREATE TABLE titles (
     emp_no int NOT NULL,
+	foreign key(emp_no) references employees(emp_no),
     title varchar(100) NOT NULL,
     from_date date NOT NULL,
     to_date date NOT NULL,
