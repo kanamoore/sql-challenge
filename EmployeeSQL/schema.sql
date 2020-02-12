@@ -1,15 +1,15 @@
 -- create departments table
 drop table if exists departments cascade;
 CREATE TABLE departments (
-    dept_no varchar NOT NULL primary key,
-    dept_name varchar NOT NULL);
+    dept_no varchar(10) NOT NULL primary key,
+    dept_name varchar(30) NOT NULL);
 
 -- create department employee table
 -- set combination of emp_no & dept_no as primary key (emp_no has a duplicates value)
 drop table if exists dept_emp cascade;
 CREATE TABLE dept_emp (
     emp_no int NOT NULL,
-    dept_no varchar NOT NULL,
+    dept_no varchar(10) NOT NULL,
 	foreign key(dept_no) references departments(dept_no),
     from_date date NOT NULL,
     to_date date NOT NULL,
@@ -18,9 +18,9 @@ CREATE TABLE dept_emp (
 -- create department manager table
 drop table if exists dept_manager cascade;
 CREATE TABLE dept_manager (
-	dept_no varchar NOT NULL,
+	dept_no varchar(10) NOT NULL,
+    foreign key(dept_no) references departments(dept_no),
     emp_no int NOT NULL primary key,
-	foreign key(dept_no) references departments(dept_no),
     from_date date NOT NULL,
     to_date date NOT NULL);
 
@@ -29,9 +29,9 @@ drop table if exists employees cascade;
 CREATE TABLE employees (
     emp_no int NOT NULL primary key,
     birth_date date NOT NULL,
-    first_name varchar NOT NULL,
-    last_name varchar NOT NULL,
-    gender varchar NOT NULL,
+    first_name varchar(50) NOT NULL,
+    last_name varchar(50) NOT NULL,
+    gender varchar(10) NOT NULL,
     hire_date date NOT NULL);
 	
 -- create salaries table
@@ -43,10 +43,11 @@ CREATE TABLE salaries (
     to_date date NOT NULL);
 
 -- create titles table
+-- set combination of emp_no & from_date as primary key (some emp_no have multiple titles)
 drop table if exists titles cascade;
 CREATE TABLE titles (
     emp_no int NOT NULL,
-    title varchar NOT NULL,
+    title varchar(100) NOT NULL,
     from_date date NOT NULL,
     to_date date NOT NULL,
 	primary key(emp_no,from_date));
