@@ -27,7 +27,10 @@ conn = engine.connect()
 Reference: [SQLAlchemy documentation](https://docs.sqlalchemy.org/en/latest/core/engines.html#postgresql)
 
 2. Created a histogram to visualize the most common salary ranges for employees.
-![alt text](https://raw.githubusercontent.com/kanamoore/sql-challenge/master/EmployeeSQL/ERD%20Image.svg)
+
+![alt text](https://github.com/kanamoore/sql-challenge/blob/master/EmployeeSQL/Salary%20Ranges%20for%20Employees.PNG)
+
 
 3. Created a bar chart of average salary by title.
-![alt text](https://raw.githubusercontent.com/kanamoore/sql-challenge/master/EmployeeSQL/ERD%20Image.svg)
+
+![alt text](https://github.com/kanamoore/sql-challenge/blob/master/EmployeeSQL/Average%20Salary%20by%20TItle.PNG)
