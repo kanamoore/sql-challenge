@@ -4,7 +4,11 @@
 In this challenge, you will design the tables to hold data in the CSVs, import the CSVs into a SQL database, and answer questions about the data.
 
 #### Data Modeling
+Created an ERD of the tables using http://www.quickdatabasediagrams.com
 
+![alt text](https://raw.githubusercontent.com/kanamoore/sql-challenge/master/EmployeeSQL/ERD%20Image.svg)
+
+Click an image to get the full size table.
 
 #### Data Engineering
 
@@ -17,7 +21,12 @@ In this challenge, you will design the tables to hold data in the CSVs, import t
 Once you have a complete database, do the following:
 
 1. List the following details of each employee: employee number, last name, first name, gender, and salary.
-
+```sql
+select e.emp_no, e.last_name, e.first_name, e.gender, s.salary from employees as e
+left join salaries as s
+on e.emp_no = s.emp_no
+order by salary DESC;
+```
 2. List employees who were hired in 1986.
 
 3. List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name, and start and end employment dates.
